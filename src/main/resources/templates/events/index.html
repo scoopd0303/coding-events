@@ -12,14 +12,35 @@
 <p th:unless="${events} and ${events.size()}">No events!</p>
 
 <table class="table table-striped">
+
     <thead>
         <tr>
             <th>Name</th>
+            <th>Description</th>
+            <th>Event Photo</th>
         </tr>
     </thead>
+
     <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
+
+        <td th:text="${event.getKey()}"></td>
+        <td th:text="${event.getValue()}"></td>
+
+        <th:block th:if="${event.getKey()} == 'Mario Party'">
+            <td><img th:src="@{/images/party-time.jpeg}" width="150"/></td>
+        </th:block>
+
+        <th:block th:if="${event.getKey()} == 'Molly\'s Birthday'">
+            <td><img th:src="@{/images/molly.jpeg}" width="150"/></td>
+        </th:block>
+
+        <th:block th:if="${event.getKey()} == 'One-man pizza party'">
+            <td><img th:src="@{/images/pizza.jpeg}" width="150"/></td>
+        </th:block>
+
     </tr>
+
+
 </table>
 
 
